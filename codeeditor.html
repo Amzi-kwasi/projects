@@ -1,1 +1,907 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Code Editor</title>
 
+
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<style>
+.TYpe:before{
+    content: '<';
+    color: green;
+}
+
+    body{
+        margin: 0;
+    }
+/*editor styles*/
+
+.iframe-split{
+  background: white;
+ width: 50%;
+ height: 100%;
+ overflow-y: scroll;
+ overflow-x: hidden;
+}
+#code{
+ width: 100%;
+ height: 100%;
+}
+.split {
+ width:100%;
+ height:100%;
+}
+
+.div-flex{
+ display: flex;
+padding-top: 30px;
+ height: 100vh;
+}
+
+
+.editor{
+ display: flex;
+ flex-direction: column;
+ width: 50%;
+ height: 100%;
+ margin: 1px;
+
+}
+.editor textarea {
+ background: #242423;
+ height: 100%;
+ padding-left: 20px;
+ font-size: 15px;
+ overflow-y: scroll;
+ overflow-x: hidden;
+ color:lightsalmon;
+ caret-color: orange;
+}
+
+.demo{
+ display: none;
+}
+
+@media only screen and (max-width: 700px){
+
+.editor{
+ width: 100%;
+ height: 100%;
+}
+
+
+
+.div-flex{
+ width: 100%;
+}
+
+
+.demo{
+  border: 1px solid green;
+    border-radius: 30px;
+    position: fixed;
+    cursor: pointer;
+    font-size: 13px;
+    padding: 8px 10px;
+    text-align: center;
+    text-transform: capitalize;
+    transition: all 0.4s ease 0s;
+ display: block;
+bottom: 50px;
+right: 20px;
+}
+.demo:hover {
+  border: 1px solid green;
+  background-color: #009900;
+  color: #fff;
+  text-decoration: none;
+}
+
+.iframe-split{
+  display: none;
+ background: white;
+ width: 100%;
+ height: 100%;
+
+}
+
+
+}
+
+
+
+.editor textarea:focus {
+ outline: none;
+ color:orange;
+}
+
+
+
+
+/*toggle classes*/
+.hide{
+	display: none;
+}
+
+.show{
+display: block;
+}
+
+
+
+/*theme*/
+.atom_one{
+    background: maroon;
+    color: red;
+}
+
+.monakai{
+    background: black;
+    color: yellow;
+}
+
+.celeste{
+    background: steelblue;
+    color: white;
+}
+
+.sixteen{
+    background: coral;
+    color: green;
+}
+
+
+.mariana{
+    background: #242423;
+    color: lightsalmon;
+}
+
+.breaker{
+    background: papayawhip;
+    color: teal;
+}
+
+
+
+
+/*dark theme css*/
+/*:root {
+    --primary-color: #302AE6;
+    --secondary-color: #536390;
+    --font-color: #424242;
+    --bg-color: #fff;
+    --heading-color: #292922;
+}
+
+[data-theme="dark"] {
+    --primary-color: #9A97F3;
+    --secondary-color: #818cab;
+    --font-color: #e1e1ff;
+    --bg-color: #000000;
+    --heading-color: #818cab;
+}
+
+
+
+body {
+    background-color: var(--bg-color);
+    color: var(--font-color);
+
+
+}
+
+[data-theme="dark"]#code{
+    background-color: #1a1a1a;
+}
+
+.theme-switch {
+        height: 34px;
+        position: fixed;
+        bottom: 70px;
+        width: 30px;
+    }
+
+
+.theme-switch input {
+  display:none;
+}
+
+.slider {
+  background-color: grey;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: .4s;
+}
+
+.slider:before {
+  background-color: #fff;
+  bottom: 4px;
+  content: "";
+  height: 26px;
+  left: 4px;
+  position: absolute;
+  transition: 0.5s;
+  width: 26px;
+}
+
+input:checked + .slider {
+  background-color: grey;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+*/
+
+/*
+body{
+    background: #262626;
+}*/
+
+
+
+
+
+/*navbar*/
+
+#navbar {
+    background: black;
+    position: fixed;
+    top: 0;
+    font-family: sans-serif;
+    font-size: 15px;
+    width: 100%;
+    display: block;
+    transition: top 0.3s;
+    z-index: 9;
+}
+@media only screen and (max-width: 700px) {
+
+    .lg-nm{
+        display: none;
+     }
+
+      .sub-content{
+        position: absolute;
+        right: 100%;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 9;
+      }
+
+
+     .log{
+        position: fixed;
+     }
+     
+    }
+    
+    @media only screen and (min-width: 700px) {
+    
+        .lg-nm{
+        
+             font-weight: 700;
+             text-transform: uppercase;
+             padding: 0;
+             margin: 0;
+             position: fixed;
+             top: 5px;
+             text-align: center;
+             letter-spacing: 1px;
+            text-decoration: none;
+            font-size: 20px;
+            color: gold;
+          }
+         
+
+         .log {
+          display: none;
+         }
+        }
+
+.log{
+   font-weight: 700;
+   text-transform: uppercase;
+   line-height: 1;
+   padding: 0;
+   text-align: center;
+   margin: 0;
+   top: 5px;
+   position: fixed;
+   letter-spacing: 1px;
+  text-decoration: none;
+  font-size: 20px;
+  color: gold;
+}
+
+.logo {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+}
+
+
+
+/*menu nav*/
+
+
+    .topnav {
+    
+        text-decoration: none;
+        position: fixed;
+        width: 100%;
+        padding: 8px 10px;
+        display: block;
+        top: 40px;
+        background: #2e2e2e;
+        transition: top 0.3s;
+        
+      }
+    
+      
+      .topnav a {
+        color: #f2f2f2;
+       float: left;
+        text-decoration: none;
+        font-size: 13px;
+        text-transform: capitalize;
+        transition: 0,4s;
+      }
+      
+      .topnav a:hover{
+        background-color: #949292;
+        cursor: pointer;
+        color: white ;
+        text-decoration: none;
+      }
+      
+
+      .dropdown {
+        float: left;
+      }
+
+      .dropdown .dropbtn{
+        cursor: pointer;
+        font-size: 13px;
+        border: none;
+        outline: none;
+        color: white;
+        padding: 14px 16px;
+        font-family: inherit;
+        margin: 0;
+      }
+
+      .dropdown-content{
+        display: none;
+        position: fixed;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        margin-top: 10px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+      }
+
+  .sub-content{
+        display: none;
+        position: absolute;
+        left: 100%;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+      }
+
+
+      .sub-content a{
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+      }
+
+      .dropdown-content a{
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+      }
+.dropdown-content a:hover{
+    background-color: lightgrey;
+    color: black;
+}
+
+
+.drpdown:hover .sub-content{
+    display: block;
+}
+
+
+.dropdown:hover .dropdown-content{
+    display: block;
+}
+      .drop-it{
+        display: block;
+      }
+
+
+
+/*form*/
+
+.formspree-logo-link {
+    display: none !important;
+}
+
+        
+        .cont{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        
+
+</style>
+<body>
+    <!-- navbar -->
+<div id="navbar">
+	<img src='../img/logo.png' class="logo">
+    <m class="lg-nm">&nbsp;AsvanLauncher</m>
+    <m class="log">&nbsp;ASVL</m>
+    <i class="fa fa-ellipsis-v" style="position:absolute ; right:20px;  bottom: 14px; cursor:pointer;"></i>
+    </div>
+        
+
+<!-- menu -->
+   <div class="topnav" id="tpn">
+    <div class="dropdown">
+        <a class="dropbtn" onclick="document.getElementById('file').classList.toggle('drop-it')
+    ">File</a>
+        <div class="dropdown-content" id="file">
+            <a onclick="alert('Access denied !')">Open file</a>
+            <a>Open folder</a>
+            <a onclick="alert('Access denied !')">Open recent</a>
+            <a onclick="New()">New</a>
+            <a onclick="alert('Saved to localstorage')">Save</a>
+            <a>Save All</a>
+            <a onclick="window.close()">Close Window</a>
+            <a onclick="window.print()">Print</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <a class="dropbtn" onclick="document.getElementById('edit').classList.toggle('drop-it')
+    ">Edit</a>
+        <div class="dropdown-content" id="edit">
+            <a>Undo</a>
+            <a>Redo</a>
+            <a>Cut</a>
+            <a onclick="Copy()" id="cpy">Copy</a>
+            <a onclick="Paste()">Paste</a>
+            <a>Find</a>
+            <a>Sort lines</a>
+            <a>Wrap</a>
+            <a>Select All</a>
+            <a onclick="alert('key : ctrl + /')">Comment</a>
+        </div>
+    </div>
+<script type="text/javascript">
+    function Copy(){
+var copy=document.getElementById("cpy")
+        var copyText = document.getElementById("html").value;
+        navigator.clipboard.writeText(copyText);
+if(cpy.innerHTML == "Copy"){
+    setTimeout(()=>{
+
+    cpy.innerHTML="Copy";
+    },1500)
+    cpy.innerHTML="Copied"
+    }
+}
+
+// function Com(e){
+
+//         var comm = document.getElementById("html")
+
+//         if(e.keyCode =)
+// }
+ document.addEventListener("keydown", function(e){
+        if(e.ctrlKey && e.key === "/"){
+           
+            var texa =document.getElementById("html").value;
+            var tex=document.getElementById("html")
+            tex.value="<-- -->\n"+texa
+            tex.style.color="lightgrey"
+        }
+        
+      });
+
+function Paste(){
+    navigator.clipboard.readText()
+}
+</script>
+
+            <div class="dropdown">
+        <a class="dropbtn" onclick="document.getElementById('view').classList.toggle('drop-it')
+    ">View</a>
+        <div class="dropdown-content" id="view">
+            <a onclick="alert('Access denied ! Not a developer')">Sidebar</a>
+            <a onclick="document.getElementById('tpn').style.display='none'">Hide menu</a>
+            <a>Layout</a>
+            <a onclick="alert('Already in fullscreen!')">Enter full screen</a>
+            <a>Spell Check</a>
+            <a onclick="alert('Access denied !')">Show console</a>
+        </div>
+    </div>
+
+
+
+    <div class="dropdown">
+        <a class="dropbtn" onclick="document.getElementById('tools').classList.toggle('drop-it')
+    ">Tools</a>
+        <div class="dropdown-content" id="tools">
+         <a onclick="alert('Install Sublime !')">Command pallete</a>
+         <a onclick="alert('You are not a developer. Access denied')">Developer</a>
+         <a onclick="alert('Processing!')">Build with</a>
+         <a>Autosave<input type="checkbox" style="position:absolute; right: 10px;" name="" checked></a>
+         <a>Snippets</a>
+         <a onclick="alert('not ready !')">Bookmarks</a>
+        </div>
+    </div>
+
+
+    <div class="dropdown">
+        <a class="dropbtn" onclick="document.getElementById('terminal').classList.toggle('drop-it')
+    ">terminal</a>
+        <div class="dropdown-content" id="terminal">
+            <a>Settings</a>
+
+
+            <div class="drpdown">
+                <a>Select theme</a>
+             <div class="sub-content" style="top: 30px ;">
+         <a style="color:red;" onclick="mariana()">mariana</a>
+         <a onclick="monokai()">monokai</a>
+         <a onclick="atomOne()">atom one light</a>
+         <a onclick="breaker()">breaker</a>
+         <a onclick="sixteen()">sixteen</a>
+         <a onclick="celeste()">Celeste</a>
+        </div>
+    </div>
+
+
+            <a>Customize Theme</a>
+            <a>Syntax</a>
+            <a>Key Bindings</a>
+
+             <div class="drpdown">
+                <a>Font</a>
+             <div class="sub-content" style="bottom:0;position: absolute;">
+         <a onclick="Lg()">Larger</a>
+         <a onclick="Sm()">Smaller</a>
+         <a onclick="Rs()">Reset</a>
+        </div>
+    </div>
+
+
+
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <a class="dropbtn" onclick="document.getElementById('help').classList.toggle('drop-it')
+    ">Help</a>
+        <div class="dropdown-content" id="help">
+            <a href="https://www.sublimetext.com/docs/">Documentation</a>
+            <a>Enter License</a>
+            <a>About Asvl-Editor</a>
+            <a>Check for Updates</a>
+            <a>Report a bug</a>
+        </div>
+    </div>
+
+    
+
+    </div>
+
+
+<script type="text/javascript">
+function Lg(){
+    var textvalue= document.getElementById("html");
+
+    textvalue.style.fontSize="40px"
+} 
+
+
+function Sm(){
+    var textvalue= document.getElementById("html");
+
+    textvalue.style.fontSize="12px"
+} 
+
+
+
+function Rs(){
+    var textvalue= document.getElementById("html");
+
+    textvalue.style.fontSize="15px"
+} 
+
+
+window.onclick = function(e){
+    if(!e.target.matches('.dropbtn')){
+        var file = document.getElementById("file");
+        var edit = document.getElementById("edit");
+        var find = document.getElementById("find");
+        var view = document.getElementById("view");
+        var tools = document.getElementById("tools");
+        var terminal = document.getElementById("terminal");
+        var help = document.getElementById("help");
+
+        if(file.classList.contains('drop-it')){
+            file.classList.remove('drop-it');
+        }
+
+
+        if(edit.classList.contains('drop-it')){
+            edit.classList.remove('drop-it');
+        }
+
+
+
+        if(view.classList.contains('drop-it')){
+            view.classList.remove('drop-it');
+        }
+
+
+        if(tools.classList.contains('drop-it')){
+            tools.classList.remove('drop-it');
+        }
+
+        if(terminal.classList.contains('drop-it')){
+            terminal.classList.remove('drop-it');
+        }
+
+
+        if(help.classList.contains('drop-it')){
+            help.classList.remove('drop-it');
+        }
+    }
+}
+
+
+function New(){
+    var texa = document.getElementById("html")
+
+    texa.value="<!DOCTYPE html><html>\n<head>\n<meta charset='utf-8'>\n <meta name='viewport' content='width=device-width, initial-scale=1'>\n<title></title>\n</head>\n\n<body>\n\n<p>This is just a text.</p>\n\n</body>\n</html>"
+}
+</script>
+<br>
+<br>
+<br>
+
+<div class="div-flex" style="background:grey;" id="edtr">
+     <button onclick="myResult()" class="demo" id="dm">Result</button>
+<div class="editor split" id="editor">
+  <textarea id="html" class="TYpe" onkeyup="Compile()" onclick="Compile()" onvolumechange="Compile()" oninput="saveValue(this)"  placeholder="type your code here ...">
+
+    &lt;!DOCTYPE html&gt;
+    &lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset='utf-8'&gt;
+        &lt;meta name='viewport' content='width=device-width, initial-scale=1'&gt;
+        &lt;title&gt;&gt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+    &lt;p&gt;This is just a text&gt;/p&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;
+  </textarea>
+    </div>
+
+    
+    <div class="iframe-split" id="myOut">
+    <iframe id="code"></iframe>
+    </div>
+    </div>
+
+
+
+
+<script type="text/javascript">
+function exit(){
+    document.getElementById('form').style.display='none';
+    document.getElementById('edtr').style.display='flex';
+}
+
+
+      document.getElementById("html").value = getSavedValue("html");
+
+
+
+  function saveValue(e) {
+      var id = e.id;
+      var val = e.value;
+      localStorage.setItem(id, val);
+  }
+
+  function getSavedValue(v) {
+      if (!localStorage.getItem(v)) {
+          return "";
+      }
+      return localStorage.getItem(v);
+  };
+</script>
+<!-- <div>
+
+    <h5>Documentation</h5>
+    <p>
+</div>
+ -->
+
+    <!--     <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" />
+                <div class="slider round"></div>
+            </label>
+        </div>
+ -->
+<br>
+
+           <!--   Footer legal --> 
+            <footer style="background-color:lightgrey;position: fixed;bottom: 0;width: 100%;">
+            <section style="color:grey;">
+                <a><i class="fa fa-fork"></i>master</a>
+                <a style="position:absolute;right:200px;">Spaces:4</a>
+                <a style="position:absolute;right:40px;">HTML</a>
+            </section>
+        </footer>
+
+
+ <script type="text/javascript">
+
+	// textarea js code
+
+function Compile() {
+    var space="<head>"
+    var texS=document.getElementById("html").value;
+  var html = document.getElementById("html");
+  // var css = document.getElementById("css");
+  // var js = document.getElementById("js");
+  var code = document.getElementById("code").contentWindow.document;
+  code.open();
+    code.writeln(
+      html.value 
+    );
+    code.close();
+
+}
+
+
+
+function atomOne(){
+    var textArea =document.getElementById("html");
+
+    textArea.style.background="maroon";
+     textArea.style.color="red";
+}
+
+
+function monokai(){
+    
+    var textArea =document.getElementById("html");
+
+    textArea.style.background="black";
+     textArea.style.color="yellow";
+}
+
+function mariana(){
+
+    var textArea =document.getElementById("html");
+
+    textArea.style.background="#242423";
+     textArea.style.color="lightsalmon";
+}
+
+function breaker(){
+
+    var textArea =document.getElementById("html");
+
+    textArea.style.background="papayawhip";
+     textArea.style.color="teal";
+}
+
+
+function sixteen(){
+
+    var textArea =document.getElementById("html");
+
+    textArea.style.background="coral";
+     textArea.style.color="green";
+}
+
+function celeste(){
+
+    var textArea =document.getElementById("html");
+
+    textArea.style.background="steelblue";
+     textArea.style.color="white";
+}
+
+// result button js
+
+function myResult(){
+  let result = document.getElementById("dm");
+  
+     if(result.innerHTML == "Result"){
+      result.innerHTML = "Editor";
+     }
+     else if (result.innerHTML == "Editor") {
+      result.innerHTML = "Result";
+     }
+     
+ document.getElementById('myOut').classList.toggle('show');
+ document.getElementById("editor").classList.toggle('hide');
+}
+
+
+// // theme switching
+
+// const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+
+// function switchTheme(e) {
+//     if (e.target.checked) {
+//         document.documentElement.setAttribute('data-theme', 'dark');
+//     } else {
+//         document.documentElement.setAttribute('data-theme', 'light');
+//     }
+// }
+
+// toggleSwitch.addEventListener('change', switchTheme, false);
+
+// function switchTheme(e) {
+//     if (e.target.checked) {
+//         document.documentElement.setAttribute('data-theme', 'dark');
+//         localStorage.setItem('theme', 'dark'); //add this
+//     } else {
+//         document.documentElement.setAttribute('data-theme', 'light');
+//         localStorage.setItem('theme', 'light'); //add this
+//     }
+// }
+
+
+
+// const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+
+// if (currentTheme) {
+//     document.documentElement.setAttribute('data-theme', currentTheme);
+
+//     if (currentTheme === 'dark') {
+//         toggleSwitch.checked = true;
+//     }
+// };
+
+
+</script>
+</body>
+</html>
