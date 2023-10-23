@@ -1,1 +1,707 @@
-hjkkhl
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Dial hash</title>
+</head>
+
+<style type="text/css">
+	
+*{
+	margin: 0;
+	border: 0;
+}
+
+
+
+.list{
+    height: 80px;
+    width: 100%;
+    background-color: white;
+}
+
+
+.list-img{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    position: absolute;
+    left: 0;
+    width: 80px;
+    height: 80px;
+}
+
+@media only screen and (max-width: 700px) {
+.list{
+    height: 60px;
+    width: 100%;
+}
+
+
+
+
+
+.list-img{
+    width: 60px;
+    height: 60px;
+}
+
+}
+
+  .dialer-img{
+    width: 90px;
+    height:90px;
+    cursor:pointer;
+  }
+  
+.contt {
+	width: 100%;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	text-align: center;
+	color: white;
+}
+.contt h1{
+  color: white;
+	font-size: 70px;
+	margin-top: 80px;
+}
+
+
+.contt h3{
+  color: white;
+	font-size: 50px;
+	margin-top: 10px;
+}
+
+@media only screen and (max-width: 700px){
+  .contt h1{
+    color: white;
+    font-size: 40px;
+    margin-top: 50px;
+  }
+  
+
+
+}
+.contt p{
+	margin: 20px auto;
+	font-weight:100;
+	line-height: 25px;
+}
+
+
+
+@media only screen and (max-width : 700px){
+  .dial-items{
+  flex: 0 0 11.1111111111%;
+  max-width: 11.1111111111%;
+  }
+  .dialer-img{
+      border-radius: 10px;
+    width: 60px;
+    height:60px;
+  }
+}
+
+.dial-hash{
+	position: fixed;
+    overflow: hidden;
+	width: 100%;
+	height: 1000vh;
+	background:#006600;
+}
+
+.col-lg-4{
+ position: relative;
+  width: 100%;
+}
+
+/*.col-lg-4 {
+    flex: 0 0 33.3333333333%;
+    max-width: 33.3333333333%;
+  }*/
+
+
+.dial-items{
+  border-radius: 10px;
+  flex: 0 0 33.3333333333%;
+  max-width: 33.3333333333%;
+}
+
+.hash {
+    color:whitesmoke;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+
+.div-row{
+    background:  #f2f2f2;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+
+.net_list{
+  font-size: 16px;
+  color: #2bc903;
+  text-decoration: none;
+  margin-left: 90px;
+}
+
+
+.net_code{
+  font-size: 14px;
+  color: black;
+  text-decoration: none;
+  margin-left: 90px;
+}
+
+
+.align-items-center {
+  align-items: center !important;
+}
+
+.nav{
+    width: 100%;
+    padding: 10px 12px;
+    position: fixed;
+    background:  #008000;
+    color: white;
+    font-family: sans-serif;
+    z-index: 9;
+    display: none;
+}
+
+
+.back{
+    border: 1px solid teal;
+    color: black;
+    background-color: transparent;
+    position: fixed;
+    bottom: 60px;
+    right: 20px;
+    padding: 10px 12px;
+    border-radius: 20px;
+    display: none;
+    cursor: pointer;
+}
+
+
+</style>
+<body onload="alert('Welcome User! Images needs data to load.')">
+
+<section class="dial-hash" id="bg"></section>
+<div class="contt" id="Bg">
+  <h3>Dial - <span class="hash">Hash</span></h3>
+  <p style="font-size:22px;">Chooose a network to proceed</p>
+<br/>
+<br/>
+<div class="row">
+<div class="dial-items" onclick="Voda()">  
+<img src="https://www.discountwalas.com/wp-content/uploads/2021/12/vodafone-16.12.2021.jpeg" class="dialer-img" />
+  <p style="color:red;font-weight:bold;">Vodafone</p>
+</div>
+
+<div class="dial-items" onclick="Mtn()">  
+<img src="https://upload.wikimedia.org/wikipedia/commons/a/af/MTN_Logo.svg" class="dialer-img" />
+     <p style="color:yellow;font-weight:bold;">Mtn</p>
+</div>
+
+<div class="dial-items" onclick="Tigo()">  
+<img src="https://africaneyereport.com/wp-content/uploads/2021/03/AIrtelTigo-Logo.png"   class="dialer-img" />
+     <p style="color:blue;font-weight:bold">AirtelTigo</p>
+</div>
+</div>
+<p>Download the "Dial Hash" app on <a href="market://details?id=com.cobbold.dialhash" style="color:lightgreen;">Play Store</a></p>
+</div>
+
+<div class="nav" id="nav">
+    <a>Dial- <span class="hash">Hash</span></a>
+</div>
+<br>
+<br>
+<br>
+    <!-- Tigo -->
+<div class="row div-row" id="tigo" style="display:none">
+    <div class="col-lg-4" onclick="document.location.href='tel:*504%23'">
+        
+        <div class="list">
+            <img class ="list-img align-items-center" src="https://africaneyereport.com/wp-content/uploads/2021/03/AIrtelTigo-Logo.png"/>
+        <a class="net_list">Internet Bundle</a>
+        <br>
+        <br>
+         <a class="net_code">*504#</a>
+        </div>
+    </div>
+    <br>
+    <div class="col-lg-4" onclick="document.location.href='tel:*111%23'">
+        <div class="list">
+            <img class ="list-img align-items-center" src="https://africaneyereport.com/wp-content/uploads/2021/03/AIrtelTigo-Logo.png"/>
+            <a class="net_list">One-stop shop</a>
+            <br>
+        <br>
+         <a class="net_code">*111#</a>
+        </div>
+    </div>
+    <br>
+    <div class="col-lg-4" onclick="document.location.href='tel:*110%23'">
+    
+        <div class="list">
+            <img class ="list-img align-items-center" src="https://africaneyereport.com/wp-content/uploads/2021/03/AIrtelTigo-Logo.png"/>
+            <a class="net_list">Tigo cash</a>
+            <br>
+        <br>
+         <a class="net_code">*110#</a>
+        </div>
+        
+    </div>
+    <br>
+    <div class="col-lg-4" onclick="document.location.href='tel:*703%23'">
+    
+        <div class="list">
+            <img class ="list-img align-items-center" src="https://africaneyereport.com/wp-content/uploads/2021/03/AIrtelTigo-Logo.png"/>
+            <a class="net_list">My Number</a>
+            <br>
+        <br>
+         <a class="net_code">*703#</a>
+        </div>
+        
+    </div>
+    <br>
+    <div class="col-lg-4" onclick="document.location.href='tel:100'">
+        <div class="list">
+            <img class ="list-img align-items-center" src="https://africaneyereport.com/wp-content/uploads/2021/03/AIrtelTigo-Logo.png"/>
+            <a class="net_list">Call Center</a>
+              <br>
+        <br>
+         <a class="net_code">100</a>
+        </div>
+    
+    </div>
+    <br>
+    <div class="col-lg-4" onclick="document.location.href='tel:*588%23'">
+        <div class="list">
+            <img class ="list-img align-items-center" src="https://africaneyereport.com/wp-content/uploads/2021/03/AIrtelTigo-Logo.png"/>
+        <a class="net_list">SOS</a>
+          <br>
+        <br>
+         <a class="net_code">*588#</a>
+        </div>
+    
+    </div>
+    <br>
+    <div class="col-lg-4" onclick="document.location.href='tel:*100%23'">
+    
+        <div class="list">
+            <img class ="list-img align-items-center" src="https://africaneyereport.com/wp-content/uploads/2021/03/AIrtelTigo-Logo.png"/>
+        <a class="net_list">Sim Info</a>
+          <br>
+        <br>
+         <a class="net_code">*100#</a>
+        </div>
+    
+    </div>
+    <br>
+    <div class="col-lg-4" onclick="document.location.href='tel:*124%23'">
+        <div class="list">
+            <img class ="list-img align-items-center" src="https://africaneyereport.com/wp-content/uploads/2021/03/AIrtelTigo-Logo.png"/>
+        <a class="net_list">Check Airtime Balance</a>
+        <br>
+        <br>
+         <a class="net_code">*124#</a>
+        </div>
+    
+    </div>
+</div>
+
+
+
+
+<!-- Mtn -->
+
+<div class="row div-row" id="mtn" style="display:none">
+    <div class="col-lg-4" onclick="document.location.href='tel:*138%23'">
+        <div class="list">
+            <img class ="list-img align-items-center" src="https://upload.wikimedia.org/wikipedia/commons/a/af/MTN_Logo.svg"/>
+        <a class="net_list">Internet Bundle</a>
+         <br>
+        <br>
+         <a class="net_code">*138#</a>
+        </div>
+    
+    </div>
+    <br>
+    <div class="col-lg-4" onclick="document.location.href='tel:*506%23'">
+        <div class="list">
+            <img class ="list-img align-items-center" src="https://upload.wikimedia.org/wikipedia/commons/a/af/MTN_Logo.svg"/>
+            <a class="net_list">Borrow Credit</a>
+             <br>
+        <br>
+         <a class="net_code">*506#</a>
+        </div>
+    
+    </div>
+    <br>
+    <div class="col-lg-4" onclick="document.location.href='tel:*198%23'">
+        <div class="list">
+            <img class ="list-img align-items-center" src="https://upload.wikimedia.org/wikipedia/commons/a/af/MTN_Logo.svg"/>
+            <a class="net_list">Share Credit</a>
+             <br>
+        <br>
+         <a class="net_code">*198#</a>
+        </div>
+    
+    </div>
+    <br>
+    <div class="col-lg-4" onclick="document.location.href='tel:*170%23'">
+        <div class="list">
+            <img class ="list-img align-items-center" src="https://upload.wikimedia.org/wikipedia/commons/a/af/MTN_Logo.svg"/>
+            <a class="net_list">Mobile Money (MOMO)</a>
+             <br>
+        <br>
+         <a class="net_code">*170#</a>
+        </div>
+    </div>
+    <br>
+    <div class="col-lg-4" onclick="document.location.href='tel:*141%23'">
+        <div class="list">
+            <img class ="list-img align-items-center" src="https://upload.wikimedia.org/wikipedia/commons/a/af/MTN_Logo.svg"/>
+            <a class="net_list">Just 4 U</a>
+             <br>
+        <br>
+         <a class="net_code">*141#</a>
+        </div>
+    
+    </div>
+    <br>
+    <div class="col-lg-4" onclick="document.location.href='tel:*567%23'">
+        <div class="list">
+            <img class ="list-img align-items-center" src="https://upload.wikimedia.org/wikipedia/commons/a/af/MTN_Logo.svg"/>
+        <a class="net_list">MTN Mashup</a>
+         <br>
+        <br>
+         <a class="net_code">*567#</a>
+        </div>
+    
+    </div>
+    <br>
+    <div class="col-lg-4" onclick="document.location.href='tel:*135*55*1%23'">
+        <div class="list">
+            <img class ="list-img align-items-center" src="https://upload.wikimedia.org/wikipedia/commons/a/af/MTN_Logo.svg"/>
+        <a class="net_list">Zone Bundle</a>
+         <br>
+        <br>
+         <a class="net_code">*135*55*1#</a>
+        </div>
+    
+    </div>
+    <br>
+    <div class="col-lg-4"onclick="document.location.href='tel:*5060%23'">
+        <div class="list">
+            <img class ="list-img align-items-center" src="https://upload.wikimedia.org/wikipedia/commons/a/af/MTN_Logo.svg"/>
+        <a class="net_list">SME Offers</a>
+         <br>
+        <br>
+         <a class="net_code">*5060#</a>
+        </div>
+
+    </div>
+    <br>
+    <div class="col-lg-4" onclick="document.location.href='tel:*124%23'">
+        <div class="list">
+            <img class ="list-img align-items-center" src="https://upload.wikimedia.org/wikipedia/commons/a/af/MTN_Logo.svg"/>
+        <a class="net_list">Check Airtime Balance</a>
+         <br>
+        <br>
+         <a class="net_code">*124#</a>
+        </div>
+        
+    </div>
+    <br>
+    <div class="col-lg-4" onclick="document.location.href='tel:100'">
+        <div class="list">
+            <img class ="list-img align-items-center" src="https://upload.wikimedia.org/wikipedia/commons/a/af/MTN_Logo.svg"/>
+        <a class="net_list">Call Center</a>
+         <br>
+        <br>
+         <a class="net_code">100</a>
+        </div>
+        </a>
+    </div>
+    <br>
+    <div class="col-lg-4" onclick="document.location.href='tel:*156%23'">
+        <div class="list">
+            <img class ="list-img align-items-center" src="https://upload.wikimedia.org/wikipedia/commons/a/af/MTN_Logo.svg"/>
+        <a class="net_list">Check your Number</a>
+         <br>
+        <br>
+         <a class="net_code">*156#</a>
+        </div>
+        
+    </div>
+    <br>
+    <div class="col-lg-4" onclick="document.location.href='tel:*595%23'">
+        <div class="list">
+            <img class ="list-img align-items-center" src="https://upload.wikimedia.org/wikipedia/commons/a/af/MTN_Logo.svg"/>
+        <a class="net_list">Activate Momo Interest</a>
+         <br>
+        <br>
+         <a class="net_code">*595#</a>
+        </div>
+    
+    </div>
+
+</div>
+
+
+
+<!-- Voda -->
+<div class="row div-row" style="display: none;" id="voda">
+    <div class="col-lg-4" onclick="document.location.href='tel:*700%23'">
+        <div class="list">
+            <img class ="list-img align-items-center" src="https://www.discountwalas.com/wp-content/uploads/2021/12/vodafone-16.12.2021.jpeg"/>
+        <a class="net_list">Internet Bundle and more</a>
+         <br>
+        <br>
+         <a class="net_code">*700#</a>
+        </div>
+    
+    </div>
+    <br>
+    <div class="col-lg-4" onclick="document.location.href='tel:*505%23'">
+        <div class="list">
+            <img class ="list-img align-items-center" src="https://www.discountwalas.com/wp-content/uploads/2021/12/vodafone-16.12.2021.jpeg"/>
+            <a class="net_list">SOS Credit</a>
+             <br>
+        <br>
+         <a class="net_code">*505#</a>
+        </div>
+    
+    </div>
+    <br>
+    <div class="col-lg-4" onclick="document.location.href='tel:*150%23'">
+        <div class="list">
+            <img class ="list-img align-items-center" src="https://www.discountwalas.com/wp-content/uploads/2021/12/vodafone-16.12.2021.jpeg"/>
+            <a class="net_list">Roaming Enquiry</a>
+             <br>
+        <br>
+         <a class="net_code">*150#</a>
+        </div>
+        
+    </div>
+    <br>
+    <div class="col-lg-4" onclick="document.location.href='tel:*151%23'">
+        <div class="list">
+            <img class ="list-img align-items-center" src="https://www.discountwalas.com/wp-content/uploads/2021/12/vodafone-16.12.2021.jpeg"/>
+            <a class="net_list">Information Service</a>
+             <br>
+        <br>
+         <a class="net_code">*151#</a>
+        </div>
+    
+    </div>
+    <br>
+    <div class="col-lg-4" onclick="document.location.href='tel:*110%23'">
+        <div class="list">
+            <img class ="list-img align-items-center" src="https://www.discountwalas.com/wp-content/uploads/2021/12/vodafone-16.12.2021.jpeg"/>
+        <a class="net_list">Vodafone Cash</a>
+         <br>
+        <br>
+         <a class="net_code">*110#</a>
+        </div>
+    
+    </div>
+    <br>
+    <div class="col-lg-4" onclick="document.location.href='tel:*533%23'">
+        <div class="list">
+            <img class ="list-img align-items-center" src="https://www.discountwalas.com/wp-content/uploads/2021/12/vodafone-16.12.2021.jpeg"/>
+        <a class="net_list">Yendi Agoro</a>
+         <br>
+        <br>
+         <a class="net_code">*533#</a>
+        </div>
+    
+    </div>
+    <br>
+    <div class="col-lg-4" onclick="document.location.href='tel:*5888%23'">
+        <div class="list">
+            <img class ="list-img align-items-center" src="https://www.discountwalas.com/wp-content/uploads/2021/12/vodafone-16.12.2021.jpeg"/>
+        <a class="net_list">Vodafone X</a>
+         <br>
+        <br>
+         <a class="net_code">*5888#</a>
+        </div>
+        
+    </div>
+    <br>
+    <div class="col-lg-4" onclick="document.location.href='tel:*124%23'">
+        <div class="list">
+            <img class ="list-img align-items-center" src="https://www.discountwalas.com/wp-content/uploads/2021/12/vodafone-16.12.2021.jpeg"/>
+        <a class="net_list">Check Airtime Balance</a>
+         <br>
+        <br>
+         <a class="net_code">*124#</a>
+        </div>
+    
+    </div>
+    <br>
+    <div class="col-lg-4" onclick="document.location.href='tel:*530%23'">
+        <div class="list">
+            <img class ="list-img align-items-center" src="https://www.discountwalas.com/wp-content/uploads/2021/12/vodafone-16.12.2021.jpeg"/>
+        <a class="net_list">Made for me</a>
+         <br>
+        <br>
+         <a class="net_code">*530#</a>
+        </div>
+        
+    </div>
+    <br>
+    <div class="col-lg-4" onclick="document.location.href='tel:*400%23'">
+        <div class="list">
+            <img class ="list-img align-items-center" src="https://www.discountwalas.com/wp-content/uploads/2021/12/vodafone-16.12.2021.jpeg"/>
+        <a class="net_list">Check Sim Registration</a>
+         <br>
+        <br>
+         <a class="net_code">*400#</a>
+        </div>
+        
+    </div>
+    <br>
+    <div class="col-lg-4" onclick="document.location.href='tel:*126%23'">
+        <div class="list">
+            <img class ="list-img align-items-center" src="https://www.discountwalas.com/wp-content/uploads/2021/12/vodafone-16.12.2021.jpeg"/>
+        <a class="net_list">Bundle Information</a>
+         <br>
+        <br>
+         <a class="net_code">*126#</a>
+        </div>
+        
+    </div>
+    <br>
+    <div class="col-lg-4" onclick="document.location.href='tel:*200%23'">
+        <div class="list">
+            <img class ="list-img align-items-center" src="https://www.discountwalas.com/wp-content/uploads/2021/12/vodafone-16.12.2021.jpeg"/>
+        <a class="net_list">Vodafone Red offer</a>
+         <br>
+        <br>
+         <a class="net_code">*200#</a>
+        </div>
+
+    </div>
+    <br>
+    <div class="col-lg-4" onclick="document.location.href='tel:*480%23'">
+        <div class="list">
+            <img class ="list-img align-items-center" src="https://www.discountwalas.com/wp-content/uploads/2021/12/vodafone-16.12.2021.jpeg"/>
+        <a class="net_list">Unlimited Offers</a>
+         <br>
+        <br>
+         <a class="net_code">*480#</a>
+        </div>
+        
+    </div>
+<br>
+    <div class="col-lg-4" onclick="document.location.href='tel:*556%23'">
+        <div class="list">
+            <img class ="list-img align-items-center" src="https://www.discountwalas.com/wp-content/uploads/2021/12/vodafone-16.12.2021.jpeg"/>
+        <a class="net_list">Vodafone Vim offers</a>
+         <br>
+        <br>
+         <a class="net_code">*556#</a>
+        </div>
+        
+    </div>
+    <br>
+    <div class="col-lg-4" onclick="document.location.href='tel:*7070%23'">
+        <div class="list">
+            <img class ="list-img align-items-center" src="https://www.discountwalas.com/wp-content/uploads/2021/12/vodafone-16.12.2021.jpeg"/>
+        <a class="net_list">Vodafone Supreme</a>
+         <br>
+        <br>
+         <a class="net_code">*7070#</a>
+        </div>
+        
+    </div>
+    <br>
+    <div class="col-lg-4" onclick="document.location.href='tel:*127%23'">
+        <div class="list">
+            <img class ="list-img align-items-center" src="https://www.discountwalas.com/wp-content/uploads/2021/12/vodafone-16.12.2021.jpeg"/>
+        <a class="net_list">Check your number</a>
+         <br>
+        <br>
+         <a class="net_code">*127#</a>
+        </div>
+        
+    </div>
+
+
+</div>   
+
+
+
+<button onclick="Back()" class="back" id="bck">Back</button>
+
+<script type="text/javascript">
+	function Tigo(){
+		var bg=document.getElementById("bg");
+		var Bg=document.getElementById("Bg");
+         var nav=document.getElementById('nav')
+         var back=document.getElementById("bck")
+
+		Bg.style.display="none"
+		bg.style.display="none"
+		nav.style.display="block"
+        bck.style.display="block"
+		document.getElementById("tigo").style.display="block";
+	}
+    function Voda(){
+        var bg=document.getElementById("bg");
+        var Bg=document.getElementById("Bg");
+         var nav=document.getElementById('nav')
+        var back=document.getElementById("bck")
+
+        Bg.style.display="none"
+        bck.style.display="block"
+        bg.style.display="none"
+        nav.style.display="block"
+        document.getElementById("voda").style.display="block";
+    }
+    function Mtn(){
+        var bg=document.getElementById("bg");
+        var Bg=document.getElementById("Bg");
+        var nav=document.getElementById('nav')
+        var back=document.getElementById("bck")
+
+        Bg.style.display="none"
+        bg.style.display="none"
+        bck.style.display="block"
+        nav.style.display="block"
+        document.getElementById("mtn").style.display="block";
+    }
+
+
+    function Back(){
+        var bg=document.getElementById("bg");
+        var Bg=document.getElementById("Bg");
+        var nav=document.getElementById('nav')
+        var back=document.getElementById("bck")
+
+        Bg.style.display="block"
+        bg.style.display="block"
+        bck.style.display="none"
+        nav.style.display="none"
+        document.getElementById("tigo").style.display="none";
+        document.getElementById("voda").style.display="none";
+        document.getElementById("mtn").style.display="none";
+    }
+</script>
+</body>
+</html>
